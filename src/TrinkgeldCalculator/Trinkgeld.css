@@ -1,0 +1,71 @@
+.App {
+  background-color: white;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.24);
+  max-height: 90vh;
+  overflow: auto;
+}
+
+h4,
+h3,
+h2 {
+  margin: 0;
+}
+
+.content {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 20px 0 20px 0;
+}
+.content input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button,
+input {
+  height: 30px;
+  margin: 5px 0 5px 0;
+  border-radius: 5px;
+  border: 1px solid gray;
+  box-sizing: border-box;
+}
+button:hover,
+input:hover {
+  border-color: #444444;
+}
+
+button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+button.BigButton {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  width: 100%;
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+}
+button.BigButton + .BigButton {
+  margin-left: 20px;
+}
+
+.buttons {
+  display: flex;
+}/*# sourceMappingURL=Trinkgeld.css.map */

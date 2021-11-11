@@ -1,0 +1,6 @@
+ul {
+  display: flex;
+  li+li {
+    margin-left: 40px;
+  }
+}

@@ -1,0 +1,74 @@
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute;
+
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+.App {
+  background-color: white;
+  width: fit-content;
+  height: fit-content;
+  padding: 20px;
+  @include centerer(true, true);
+  border-radius: 5px;
+  box-shadow: 3px 3px 6px 0 rgba(black, 0.24);
+  max-height: 90vh;
+  overflow: auto;
+}
+
+h4,
+h3,
+h2 {
+  margin: 0;
+}
+
+.content {
+  height: fit-content;
+  margin: 20px 0 20px 0;
+  input {
+      width: 100%;
+      box-sizing: border-box;
+  }
+}
+button,
+input {
+    height: 30px;
+    margin: 5px 0 5px 0;
+    border-radius: 5px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: rgb(68, 68, 68);
+    }
+}
+
+button {
+  width: fit-content;
+  cursor: pointer;
+  &.BigButton {
+    min-width: fit-content;
+    width: 100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+
+    & + .BigButton {
+      margin-left: 20px;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+}
