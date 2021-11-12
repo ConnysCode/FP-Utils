@@ -4,6 +4,10 @@ nav {
 }
 nav a {
   text-decoration: none;
+  color: gray;
+}
+nav a:hover {
+  text-decoration: underline !important;
 }
 nav a + a {
   margin-left: 5px;
