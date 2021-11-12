@@ -1,6 +1,13 @@
-ul {
+nav {
   display: flex;
+  margin: 5px 5px 0 5px;
 }
-ul li + li {
-  margin-left: 40px;
+nav a {
+  text-decoration: none;
+}
+nav a + a {
+  margin-left: 5px;
+}
+nav button {
+  margin: 0;
 }/*# sourceMappingURL=App.css.map */

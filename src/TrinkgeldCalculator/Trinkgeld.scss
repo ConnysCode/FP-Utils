@@ -21,9 +21,12 @@
   padding: 20px;
   @include centerer(true, true);
   border-radius: 5px;
-  box-shadow: 3px 3px 6px 0 rgba(black, 0.24);
+  box-shadow: 2px 2px 6px 0 rgba(black, 0.24);
   max-height: 90vh;
   overflow: auto;
+  p,input,button {
+    font-size: 15px;
+  }
 }
 
 h4,
@@ -36,21 +39,51 @@ h2 {
   height: fit-content;
   margin: 20px 0 20px 0;
   input {
-      width: 100%;
-      box-sizing: border-box;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 button,
 input {
-    height: 30px;
-    margin: 5px 0 5px 0;
-    border-radius: 5px;
-    border: 1px solid gray;
-    box-sizing: border-box;
-
+  &.hidden {
+    background-color: unset !important;
+    border: none !important;
+    outline: none !important;
+    font-weight: bold;
+    text-align: right;
+    border-radius: 0;
     &:hover {
-      border-color: rgb(68, 68, 68);
+      border-bottom: 1px solid rgb(68, 68, 68) !important;
     }
+    &:focus {
+      border-bottom: 2px solid rgb(43, 43, 43) !important;
+    }
+  }
+  height: 30px;
+  margin: 5px 0 5px 0;
+  border-radius: 5px;
+  border: 1px solid gray;
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: rgb(68, 68, 68);
+  }
+  &:focus {
+    border-color: rgb(68, 68, 68);
+    outline: 1px solid rgb(43, 43, 43);
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 button {
@@ -61,7 +94,6 @@ button {
     width: 100%;
     border-radius: 5px;
     box-sizing: border-box;
-    outline: none;
 
     & + .BigButton {
       margin-left: 20px;

@@ -12,9 +12,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
-  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.24);
   max-height: 90vh;
   overflow: auto;
+}
+.App p, .App input, .App button {
+  font-size: 15px;
 }
 
 h4,
@@ -42,9 +45,43 @@ input {
   border: 1px solid gray;
   box-sizing: border-box;
 }
+button.hidden,
+input.hidden {
+  background-color: unset !important;
+  border: none !important;
+  outline: none !important;
+  font-weight: bold;
+  text-align: right;
+  border-radius: 0;
+}
+button.hidden:hover,
+input.hidden:hover {
+  border-bottom: 1px solid #444444 !important;
+}
+button.hidden:focus,
+input.hidden:focus {
+  border-bottom: 2px solid #2b2b2b !important;
+}
 button:hover,
 input:hover {
   border-color: #444444;
+}
+button:focus,
+input:focus {
+  border-color: #444444;
+  outline: 1px solid #2b2b2b;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 button {
@@ -60,7 +97,6 @@ button.BigButton {
   width: 100%;
   border-radius: 5px;
   box-sizing: border-box;
-  outline: none;
 }
 button.BigButton + .BigButton {
   margin-left: 20px;

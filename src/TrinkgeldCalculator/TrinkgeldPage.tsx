@@ -5,7 +5,6 @@ function TrinkgeldPage() {
   const [persons, setPersons] = useState<{ name: string; hours: number }[]>([]);
   const [currPersonIndex, setCurrPersonIndex] = useState(0);
   const [calculationPhase, setCalcPhase] = useState(0);
-  const [hoursWorked, setHoursWoked] = useState(0);
   const [money, setMoney] = useState(0);
 
   const nameInput = useRef<HTMLInputElement>(null);
@@ -21,8 +20,6 @@ function TrinkgeldPage() {
     const person = newP.findIndex((p) => p.name === name);
     if (person > -1) return;
     newP.push({ name: name, hours: hours });
-
-    setHoursWoked(hoursWorked + hours);
     setPersons(newP);
     nameInput.current?.focus();
     nameInput.current?.select();
@@ -31,23 +28,16 @@ function TrinkgeldPage() {
     const newPersons = [...persons];
     const person = newPersons.findIndex((p) => p.name === name);
     if (person < 0) return;
-    const personHours = newPersons[person].hours;    
     newPersons.splice(person, 1);
-    console.log(newPersons);
-    console.log(name);
-    console.log(person);
-    
-    
     setPersons(newPersons);
-    setHoursWoked(hoursWorked - personHours);
   };
 
-  const calculateHours = () => {
+  const calculateHours = (persons: { name: string; hours: number }[]) => {
     let hours = 0;
     for (const p of persons) {
       hours = hours + p.hours;
     }
-    return hours;
+    return parseFloat(hours.toFixed(2));
   };
   const nextPerson = () => {
     if (currPersonIndex < persons.length - 1) setCurrPersonIndex(currPersonIndex + 1);
@@ -60,7 +50,7 @@ function TrinkgeldPage() {
   const getPerson = () => {
     return {
       ...persons[currPersonIndex],
-      percent: parseFloat((persons[currPersonIndex].hours / hoursWorked).toFixed(2)),
+      percent: parseFloat((persons[currPersonIndex].hours / calculateHours(persons)).toFixed(2)),
     };
   };
 
@@ -69,7 +59,24 @@ function TrinkgeldPage() {
       <div className="App">
         <h2>Trinkgeld Rechner</h2>
         <p>
-          Es wurden insgesamt <b>{hoursWorked} Stunden</b> gearbeitet
+          Es wurden wurden{" "}
+          <b>
+            <input
+              type={`number`}
+              className={`hidden`}
+              style={{ width: `${`${money}`.length + 0.5}ch` }}
+              onChange={(e) => {
+                if (e.target.value === ``) return;
+                setMoney(parseFloat(e.target.value));
+                e.target.style.width = `${`${parseFloat(e.target.value)}`.length + 0.5}ch`;
+              }}
+              defaultValue={money}
+            ></input>{" "}
+            €{" "}
+          </b>{" "}
+          an Trinkgeld eingenommen.
+          <br />
+          Es wurden insgesamt <b>{calculateHours(persons)} Stunden </b> gearbeitet.
         </p>
         <div>
           <h4>Person Hinzufügen</h4>
@@ -81,9 +88,14 @@ function TrinkgeldPage() {
           {persons.map((p) => {
             return (
               <>
-                <button onClick={() => {
-                  removePerson(p.name)
-                }}>X</button> {p.name} - <b>{p.hours}</b>
+                <button
+                  onClick={() => {
+                    removePerson(p.name);
+                  }}
+                >
+                  X
+                </button>{" "}
+                {p.name} - <b>{p.hours} Stunden</b>
                 <br />
               </>
             );
@@ -110,21 +122,23 @@ function TrinkgeldPage() {
         </h2>
         <div className={`content`}>
           <h3>
-            Trinkgeld: <b>{money * getPerson().percent}€</b>
+            Trinkgeld: <b>{(money * getPerson().percent).toFixed(2)}€</b>
           </h3>
           <p>
             Stunden gearbeitet: <b>{persons[currPersonIndex].hours}h</b>
             <br />
-            Prozentualer Anspruch: <b>{getPerson().percent * 100} %</b>
+            Prozentualer Anspruch: <b>{(getPerson().percent * 100).toFixed(2)} %</b>
           </p>
         </div>
         <div className={`buttons`}>
           <button onClick={prevPerson} className={`BigButton`}>
-            Previous Person
+            {(currPersonIndex === 0 && <>Back to Menu</>) || <>Previous Person</>}
           </button>
-          <button onClick={nextPerson} className={`BigButton`}>
-            Next Person
-          </button>
+          {currPersonIndex < persons.length - 1 && (
+            <button onClick={nextPerson} className={`BigButton`}>
+              Next Person
+            </button>
+          )}
         </div>
       </div>
     );

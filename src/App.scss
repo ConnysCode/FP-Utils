@@ -1,6 +1,13 @@
-ul {
+nav {
   display: flex;
-  li+li {
-    margin-left: 40px;
+  margin: 5px 5px 0 5px;
+  a {
+    text-decoration: none;
+  }
+  a + a {
+    margin-left: 5px;
+  }
+  button {
+    margin: 0;
   }
 }
