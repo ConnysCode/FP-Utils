@@ -1,21 +1,28 @@
-.sonderButtons {
+.SonderButtons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  width: 100%;
 }
-.sonderButtons > * {
+.SonderButtons > * {
   flex-grow: 1;
 }
 
-.lasertagName {
-  color: #3fbf3f;
+.typeName {
+  width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
 }
 
 .sonderGroupName {
   color: #fecc00;
-  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   font-family: "DejaVu Sans Book Condensed", sans-serif;
   font-weight: normal;
+  width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: end;
 }
 .sonderGroupName:hover {
   cursor: pointer;
@@ -25,12 +32,20 @@
 .sonderGroupDetails {
   display: flex;
   flex-flow: column;
+  width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
 }
 
 .SonderItemList {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.SonderItemList * {
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .SonderSweets {
@@ -40,7 +55,7 @@
 
 .SonderListItem {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
@@ -60,4 +75,10 @@
 }
 .SonderListItem.complete:hover {
   opacity: 1;
+}
+
+.CheckListItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }/*# sourceMappingURL=sondergruppen.css.map */
