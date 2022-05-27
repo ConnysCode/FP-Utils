@@ -1,0 +1,58 @@
+.sonderButtons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  > * {
+    flex-grow: 1;
+  }
+}
+.lasertagName {
+  color: #3fbf3f;
+}
+.sonderGroupName {
+  color: #fecc00;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  font-family: "DejaVu Sans Book Condensed", sans-serif;
+  font-weight: normal;
+  &:hover {
+      cursor: pointer;
+    color:#c7ab3b;
+  }
+}
+.sonderGroupDetails {
+  display: flex;
+  flex-flow: column;
+}
+
+.SonderItemList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.SonderSweets {
+    cursor: pointer;
+    color: gray;
+}
+
+.SonderListItem {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: fit-content;
+  flex-grow: 1;
+  padding: 10px;
+  background-color: #fef9ee;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px 0 rgba(black, 0.24);
+  p {
+    margin: 0;
+  }
+  &.complete {
+    opacity: 0.5;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Trinkgeld.css";
 import { Helmet } from "react-helmet";
 import Person from "./components/person";
 
@@ -187,7 +186,17 @@ function TrinkgeldPage() {
         <meta charSet="utf-8" />
         <title>{(calculationPhase === 2 && getPerson().name) || `Trinkgeld Rechner`}</title>
       </Helmet>
-      <div className="App">
+      <nav>
+        <ol>
+          <li>
+            <Link to={`/`}>Menu</Link>
+          </li>
+          <li>
+            Trinkgeld Rechner
+          </li>
+        </ol>
+      </nav>
+      <div className="App Panel">
         {(calculationPhase === 2 && <CalculateMenu />) ||
           (calculationPhase === 1 && <MainMenu />) || <MoneyInit />}
       </div>

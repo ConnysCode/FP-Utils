@@ -5,6 +5,6 @@
 		}
 	],
 	"settings": {
-		"liveSassCompile.settings.showOutputWindowOn": "None"
+		"liveSassCompile.settings.showOutputWindowOn": "Error"
 	}
 }
